@@ -1,0 +1,13 @@
+
+注意：：
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+
+http://localhost:8888/end/page/login.html
+
+admin    admin 
+
+http://localhost:8888/front/index.html
+
+001     001（md5加密）

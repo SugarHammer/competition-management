@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>大学生竞赛综合管理系统</title>
+    <link rel="stylesheet" href="../images/layui/css/layui.css" media="all">
+    <script src="../images/layui/layui.js"></script>
+    <script src="../images/js/jquery-1.9.1.min.js"></script>
+</head>
+<body class="layui-layout-body">
+<div id="wrapper">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">大学生竞赛综合管理系统</div>
+        <ul class="layui-nav layui-layout-left">
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../images/touxiang.jpg" class="layui-nav-img">
+                    {{user.yonghuming}}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a>权限：[{{user.level}}]</a></dd>
+                    
+                </dl>
+            </li>
+			<li class="layui-nav-item"><a   href='/front/index.html'   style="cursor:pointer;">返回前台</a></li>
+            <li class="layui-nav-item"><a  @click="logout" style="cursor:pointer;">退出登录</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+		 <ul class="layui-nav layui-nav-tree" lay-filter="test">
+
+
+
+				<li class="layui-nav-item">
+                    <a href="javascript:;">个人资料管理</a>
+                    <dl class="layui-nav-child">
+						<dd><a href='yonghuxinxi_updt2.html' target='hsgmain'>修改个人资料</a></dd>
+	<dd><a href='mod.html' target='hsgmain'>修改密码</a></dd>
+                    </dl>
+                </li>
+                       
+				<li class="layui-nav-item">
+                    <a href="javascript:;">赛事报名管理</a>
+                    <dl class="layui-nav-child"> 
+<dd><a href='saishibaomingInfo2.html' target='hsgmain'>赛事报名查询</a></dd>
+
+                    </dl>
+                </li>
+              
+                       
+				<li class="layui-nav-item">
+                    <a href="javascript:;">比赛管理</a>
+                    <dl class="layui-nav-child"> 
+<dd><a href='bisaixinxiInfo2.html' target='hsgmain'>比赛查询</a></dd>
+
+                    </dl>
+                </li>
+                       
+				<li class="layui-nav-item">
+                    <a href="javascript:;">我的帖子</a>
+                    <dl class="layui-nav-child">
+						<dd><a href='tieziInfo.html' target='hsgmain'>我的帖子</a></dd>
+
+                    </dl>
+                </li>
+                       
+
+
+
+
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <div style="padding: 0px;height: 100%;width: 100%;">
+            <iframe src="sy.html" name="hsgmain" style="border: 0px solid blue;height: 100%;width: 100%;scrolling:auto;"></iframe>
+        </div>
+    </div>
+    <div class="layui-footer">
+        @ 大学生竞赛综合管理系统 欢迎使用本系统
+    </div>
+</div>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</div>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script>
+    new Vue({
+        el: "#wrapper",
+        data: {
+            user: {},
+            authority: [],
+            totalUser: 0,
+            totalComment: 0,
+            totalPrice: 0,
+            totalShopping: 0,
+            echartsShowLeftArr: [],
+            echartsShowRightArr: [],
+            echartsType: 'pie'
+        },
+        created: function () {
+            this.user = JSON.parse(localStorage.getItem("user"));
+
+            axios.get("/authority").then(res => {
+                if (res.data.code === '0') {
+                    this.authority = res.data.data;
+                } else {
+                    msg('error', res.data.msg);
+                }
+            });
+
+            axios.get("/echarts/getTotal").then(res => {
+                if (res.data.code === '0') {
+                    let map = res.data.data;
+                    this.totalUser = map['totalUser'];
+                    this.totalComment = map['totalComment'];
+                    this.totalPrice = map['totalPrice'];
+                    this.totalShopping = map['totalShopping'];
+                }
+            });
+
+            this.drawLine();
+        },
+        methods: {
+            drawLine() {
+                axios.get('/echarts/get/price').then(res => {
+                    // 基于准备好的dom，初始化echarts实例
+                    this.echartsShowLeftArr = res.data.data;
+                    if (this.echartsShowLeftArr.length) {
+                        let myChart = echarts.init(document.getElementById('left'));
+                        let option = this.getEchartsType(this.echartsShowLeftArr, this.echartsType);
+                        myChart.setOption(option, true);
+                    }
+                });
+                axios.get('/echarts/get/shopping').then(res => {
+                    // 基于准备好的dom，初始化echarts实例
+                    this.echartsShowRightArr = res.data.data;
+                    if (this.echartsShowRightArr.length) {
+                        let myChart = echarts.init(document.getElementById('right'));
+                        let option = this.getEchartsType(this.echartsShowRightArr, this.echartsType);
+                        myChart.setOption(option, true);
+                    }
+                });
+            },
+            selectEchartsType() {
+                let leftChart = echarts.init(document.getElementById('left'));
+                let leftOption = this.getEchartsType(this.echartsShowLeftArr, this.echartsType);
+                leftChart.setOption(leftOption, true);
+
+                let rightChart = echarts.init(document.getElementById('right'));
+                let rightOption = this.getEchartsType(this.echartsShowRightArr, this.echartsType);
+                rightChart.setOption(rightOption, true);
+            },
+            getEchartsType(echartsArr, type) {
+                for (let item of echartsArr) {
+                    if (item.series[0].type === type) {
+                        return item;
+                    }
+                }
+            },
+            logout() {
+                logout();
+            }
+        }
+    });
+</script>
+</body>
+</html>

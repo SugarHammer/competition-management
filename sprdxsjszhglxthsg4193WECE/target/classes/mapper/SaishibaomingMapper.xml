@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.SaishibaomingInfoDao">
+
+    <select id="checkRepeat" resultType="java.lang.Integer">
+        select count(id) from `saishibaoming_info` where ${column} = #{value}
+        <if test="id != null">
+            and id != #{id}
+        </if>
+    </select>
+
+  <select id="findByYonghumingzj" resultType="com.example.vo.SaishibaomingInfoVo">
+        select * from `saishibaoming_info` where `yonghuming` = #{username}
+    </select>
+
+    <select id="findBySaishimingcheng" resultType="com.example.vo.SaishibaomingInfoVo">
+        select `saishibaoming_info`.* from `saishibaoming_info`
+        where 1 = 1
+        <if test="saishimingcheng != null and saishimingcheng != '' and saishimingcheng != 'all'">
+            and `saishibaoming_info`.`saishimingcheng` like concat('%', #{saishimingcheng}, '%')
+        </if>
+        order by `saishibaoming_info`.id
+    </select>
+	<select id="findBySaishimingchenglist2" resultType="com.example.vo.SaishibaomingInfoVo">
+        select `saishibaoming_info`.* from `saishibaoming_info`
+        where 1 = 1
+        <if test="saishimingcheng != null and saishimingcheng != '' and saishimingcheng != 'all'">
+            and `saishibaoming_info`.`saishimingcheng` like concat('%', #{saishimingcheng}, '%')
+        </if>
+		<if test="yonghuming != null and yonghuming != '' and yonghuming != 'all'">
+            and `saishibaoming_info`.`yonghuming` like concat('%', #{yonghuming}, '%')
+        </if>
+        order by `saishibaoming_info`.id
+    </select>        <!--list23N-->
+    <select id="count" resultType="Integer">
+        select count(id) from `saishibaoming_info`
+    </select>
+</mapper>
+

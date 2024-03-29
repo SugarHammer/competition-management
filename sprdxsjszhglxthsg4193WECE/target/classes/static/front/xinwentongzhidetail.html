@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/font-awesome.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/owl.carousel.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/magnific-popup.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/animate.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/style-red.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/tk.css" media="screen" />
+    <script type="text/javascript" src="qtimages/js/jquery.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="qtimages/js/bootstrap.js"></script>
+    <script type="text/javascript" src="qtimages/js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#navigation #nav_0 .menu1").addClass("active");
+        });
+    </script>
+    <link rel="stylesheet" href="./qtimages/sl_common_form.css">
+    <title>新闻通知</title>
+</head>
+<body>
+<div id="wrapper">
+    <div id="container">
+        <script src="qttop.js"></script>
+        <script src="bht.js"></script>
+        <div id="content">
+
+            <div class="section-content team-section2 no-padd" id="index-news">
+                <div class="title-section title2">
+                    <div class="container triggerAnimation animated" data-animate="bounceIn">
+                        <h1>新闻通知</h1>
+                    </div>
+                </div>
+                <div class="team-box">
+                    <div class="container">
+                        <div class="row">
+                            <div class="content-form">
+
+                                <table width="100%" border="0"  align="center" cellpadding="3" cellspacing="1" class="table table-striped table-bordered table-hover">
+                                    <tr>
+                                        <td width='39%' height="44" align="center"><p><font style="color:#009966; font-size:18px;font-weight:bold" >{{xinwentongzhiInfo.biaoti}}</font></p>
+                                            <p>所属类别：{{xinwentongzhiInfo.leibie}} 发布人：{{xinwentongzhiInfo.faburen}} (被点击{{xinwentongzhiInfo.dianjilv}}次)</p></td></tr><tr>
+                                    <td width='39%' height=450 v-html="xinwentongzhiInfo.neirong"><a v-for="id in shouyetupian" target="_blank"></a></td></tr><tr><td align=center>点赞数:<a @click="dianzan_d_click()"><img src="qtimages/ding.gif" width="40" height="40" /> {{xinwentongzhiInfo.dianzan_d}}</a>&nbsp;<a @click="dianzan_c_click()"><img src="qtimages/cai.gif" width="40" height="40" /> {{xinwentongzhiInfo.dianzan_c}}</a> </td></tr><tr><td align=center><input type=button name=Submit5 value=返回  class='btn btn-primary' onClick="javascript:history.back()" />
+                               
+                                 
+                                    <input type=button name=Submit52 value=收藏 class='btn btn-primary' @click="collect()" />
+                                </td></tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="sidebufen.js"></script>
+        </div>
+        <script src="qtdown.js"></script></div>
+    <script type="text/javascript" src="qtimages/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.imagesloaded.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/retina-1.1.0.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/plugins-scroll.js"></script>
+    <script type="text/javascript" src="qtimages/js/waypoint.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/script.js"></script>
+    <link type="text/css" rel="stylesheet" href="qtimages/css/jquery.mmenu.all.css" />
+    <script type="text/javascript" src="qtimages/js/jquery.mmenu.all.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var mmenu = $('nav#mmenu').mmenu({
+                slidingSubmenus: true,
+                classes: 'mm-white',
+                //mm-fullscreen mm-light
+                extensions: ["theme-white"],
+                offCanvas: {
+                    position: "right",
+                    //left, top, right, bottom
+                    zposition: "front" //back, front,next
+                    //modal		: true
+                },
+                searchfield: false,
+                counters: false,
+                //navbars		: {
+                //content : [ "prev", "title", "next" ]
+                //},
+                navbar: {
+                    title: "网站导航"
+                },
+                header: {
+                    add: true,
+                    update: true,
+                    title: "网站导航"
+                }
+            });
+            $(".closemenu").click(function() {
+                var mmenuAPI = $("#mmenu").data("mmenu");
+                mmenuAPI.close();
+            });
+        });
+    </script>
+    <div class="modal" tabindex="-1" role="dialog" id="commentModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">请填写信息</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal" >
+                        <input type="hidden" name="id" v-model="commentInfo.xinwentongzhiid">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: left">评价内容</label>
+                            <div class="col-sm-7">
+                                <textarea type="text" class="form-control" v-model="commentInfo.content" placeholder="请输入评价内容"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" @click="submitComment()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/swiper-5.4.5/swiper.min.js"></script>
+<script src="js/vue2.6.11/axios.js"></script>
+<script src="js/vue2.6.11/vue.min.js"></script>
+<script src="js/my.js"></script>
+<link rel="stylesheet" href="./qtimages/sl_common_form.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/element/index.css">
+<link rel="stylesheet" href="css/hsg.css">
+<script>
+    new Vue({
+        el: '#wrapper',
+        data: {
+            isCollect: false,
+            xinwentongzhiid: 0,
+            mainSrc: '',
+            shouyetupian: [],
+
+            xinwentongzhiInfo: {},
+            comments: [],
+            commentInfo: {
+                xinwentongzhiid: 0,
+                content: ''
+            },
+            //totalComment: 0,
+            isShow: false,
+
+            user: {},
+            searchText: null,
+        },
+
+        created: function () {
+
+
+            axios.get('/auth').then(res => {
+                if (res.data.code === '0') {
+                    this.user = res.data.data;
+                }
+            });
+            this.xinwentongzhiid = this.getQueryVariable('xinwentongzhiid');
+            this.loadXinwentongzhiInfo();
+            this.loadComments();
+            axios.put('/xinwentongzhiInfo', {id: this.xinwentongzhiid, dianjilv: 1}).then(res => {
+                if (res.data.code === '0') {
+                   // alert('点赞+1');
+                    this.loadXinwentongzhiInfo();
+                } else {
+                    alert(res.data.msg)
+                }
+            })
+        },
+
+        methods: {
+            searchXinwentongzhi(text) {   // 根据关键字查询商品
+                if(text) {
+                    location.href = '/front/xinwentongzhilisttp.html?text=' + text;
+                }else {
+                    location.href = '/front/xinwentongzhilisttp.html';
+                }
+            },
+            loadXinwentongzhiInfo() {
+                axios.get("/xinwentongzhiInfo/" + this.xinwentongzhiid).then(res => {
+                    if (res.data.code === '0') {
+                        this.xinwentongzhiInfo = res.data.data;
+                        this.mainSrc = '/front/img/goods/default.png';
+                        if (this.xinwentongzhiInfo.shouyetupian) {
+                            let shouyetupian = JSON.parse(this.xinwentongzhiInfo.shouyetupian);
+                            // 截取前4个展示
+                            if (shouyetupian.length > 4) {
+                                shouyetupian = shouyetupian.splice(0, 4);
+                            }
+                            this.shouyetupian = shouyetupian;
+
+                            if (shouyetupian.length) {
+                                this.mainSrc = '/files/download/' + shouyetupian[0];
+                            }
+                        }
+                    } else {
+                        alert(res.data.msg);
+                    }
+                });
+            },
+            loadComments() {
+                axios.get("/commentInfo/allqt/" + this.xinwentongzhiid+"/xinwentongzhi").then(res => {
+                    if (res.data.code === '0') {
+                        this.comments = res.data.data;
+                        this.totalComment = this.comments.length;
+                    } else {
+                        alert(res.data.msg)
+                    }
+                })
+            },
+            getQueryVariable(variable) {
+                let query = window.location.search.substring(1);
+                let vars = query.split("&");
+                for (let i = 0; i < vars.length; i++) {
+                    let pair = vars[i].split("=");
+                    if (pair[0] === variable) {
+                        return pair[1];
+                    }
+                }
+                return '';
+            },
+            mouseOver(id) {
+                $('#main-img-id').attr('src', '/files/download/' + id);
+            },
+            changeCount(type) {
+                let $count = $('#count-id');
+                let $store = $('#store-id');
+                let count = parseInt($count.text());
+                let store = parseInt($store.text());
+                if (type === '+') {
+                    count = count === store ? store : count + 1;
+                } else {
+                    count = count === 1 ? 1 : count - 1;
+                }
+                $count.text(count)
+            },
+            addCart() {
+                window.location.href = '/front/goumaijiluadd.html?xinwentongzhiid='+this.xinwentongzhiid
+            },
+            openModel() {
+                if(this.user.level+"" == 'undefined'){
+                    alert("请先登录");
+                    return;
+                }
+
+                this.commentInfo.xinwentongzhiid = this.xinwentongzhiid;
+                this.commentInfo.content = '';
+                $('#commentModal').modal('show');
+            },
+            submitComment() {
+                let data = {userId: this.user.id, level: this.user.level, content: this.commentInfo.content, shujuid: this.commentInfo.xinwentongzhiid,biao:'xinwentongzhi'};
+                debugger
+                axios.post('/commentInfo', data).then(res => {
+                    if (res.data.code === '0') {
+                        $('#commentModal').modal('hide');
+                        alert('评价成功');
+                        this.loadXinwentongzhiInfo();
+                        this.loadComments();
+                    } else {
+                        alert(res.data.msg);
+                    }
+                })
+            },
+            dianzan_d_click() {
+                axios.put('/xinwentongzhiInfo', {id: this.xinwentongzhiid, dianzan_d: 1}).then(res => {
+                    if (res.data.code === '0') {
+                        alert('点赞+1');
+                        this.loadXinwentongzhiInfo();
+                    } else {
+                        alert(res.data.msg)
+                    }
+                })
+            },
+            dianzan_c_click() {
+                axios.put('/xinwentongzhiInfo', {id: this.xinwentongzhiid, dianzan_c: 1}).then(res => {
+                    if (res.data.code === '0') {
+                        alert('反对+1');
+                        this.loadXinwentongzhiInfo();
+                    } else {
+                        alert(res.data.msg)
+                    }
+                })
+            },
+            collect(){
+                console.log(this.xinwentongzhiInfo.shangpinmingcheng);
+                if(this.user.level+"" == 'undefined'){
+                    alert("请先登录");
+                    return;
+                }
+                axios.post('/collectInfo', {shoucangmingcheng: this.xinwentongzhiInfo.biaoti, userId: this.user.id,shujuid: this.xinwentongzhiid,level: this.user.level,biao:'xinwentongzhi'}).then(res => {
+                    if (res.data.code === '0') {
+                        alert("收藏成功");
+                    } else {
+                        alert(res.data.msg)
+                    }
+                })
+
+
+            },
+            logout() {
+                axios.get("/logout").then(res => {
+                    if(res.data.code === '0') {
+                        location.href = '/front/index.html';
+                    } else {
+                        msg('error', res.data.msg);
+                    }
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

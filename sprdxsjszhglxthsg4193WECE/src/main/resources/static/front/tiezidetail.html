@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/font-awesome.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/owl.carousel.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/magnific-popup.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/animate.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/style-red.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="qtimages/css/tk.css" media="screen" />
+    <script type="text/javascript" src="qtimages/js/jquery.min.js"></script>
+    <script type="text/javascript" src="qtimages/js/jquery.migrate.js"></script>
+    <script type="text/javascript" src="qtimages/js/bootstrap.js"></script>
+    <script type="text/javascript" src="qtimages/js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#navigation #nav_0 .menu1").addClass("active");
+        });
+    </script>
+    <link rel="stylesheet" href="./qtimages/sl_common_form.css">
+    <title>帖子</title>
+</head>
+<body>
+<div id="wrapper">
+<div id="container">
+    <script src="qttop.js"></script>
+    <script src="bht.js"></script>
+    <div id="content">
+
+    <div class="section-content team-section2 no-padd" id="index-news">
+        <div class="title-section title2">
+            <div class="container triggerAnimation animated" data-animate="bounceIn">
+                <h1>帖子详细</h1>
+            </div>
+        </div>
+        <div class="team-box">
+            <div class="container">
+                <div class="row">
+                    <div class="content-form">
+
+                        <table width="100%" border="0"  align="center" cellpadding="3" cellspacing="1" class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <td width='7%' height="35">标题：</td>
+                                <td width='93%'><img width='30'height='30' :src="'bbs/'+tieziInfo.leixing+'.gif'" border=0> {{tieziInfo.biaoti}} </td>
+                            </tr>
+                            <tr>
+                                <td width='7%' height="86">内容：</td>
+                                <td width='93%'>{{tieziInfo.neirong}}</td>
+                            </tr><tr>
+                            <td height="32" colspan="2">发布人：{{tieziInfo.faburen}} 回帖数：{{totalUser}} 所属版块：{{tieziInfo.suozaibankuai}}点赞数:<a @click="dianzan_d_click()"><img src="qtimages/ding.gif" width="40" height="40" /> {{tieziInfo.dianzan_d}}</a>&nbsp;<a @click="dianzan_c_click()"><img src="qtimages/cai.gif" width="40" height="40" /> {{tieziInfo.dianzan_c}}</a> </td>
+                        </tr>
+
+                            <tr><td colspan=2 align=center><input type=button name=Submit5 value=返回 class='btn btn-primary' onClick="javascript:history.back()" />
+                               
+                            </td></tr>
+                        </table>
+
+
+                        <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <td colspan="2">已有回帖如下：</td>
+                            </tr>
+
+                            <tr v-for="item in huitie">
+                                <td width="13%"><p>回复人:</p>
+                                    <p>{{item.faburen}}</p></td>
+                                <td width="87%" height="100">{{item.neirong}}</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" align="center"><input type=button name=Submit53 value=我也来回复一个 class='btn btn-primary'  @click="openModel()" /></td>
+                            </tr>
+
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="sidebufen.js"></script>
+
+        <div class="modal" tabindex="-1" role="dialog" id="huitieModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">请填写信息</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal" >
+                            <input type="hidden" name="id" v-model="huitieInfo.tieziid">
+                            <input type="hidden" name="fbr" v-model="huitieInfo.fbr">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" style="text-align: left">回帖内容</label>
+                                <div class="col-sm-7">
+                                    <textarea type="text" class="form-control" v-model="huitieInfo.neirong" placeholder="请输入回帖内容"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" @click="submitHuitie()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script src="qtdown.js"></script></div>
+<script type="text/javascript" src="qtimages/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="qtimages/js/jquery.appear.js"></script>
+<script type="text/javascript" src="qtimages/js/jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="qtimages/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="qtimages/js/retina-1.1.0.min.js"></script>
+<script type="text/javascript" src="qtimages/js/plugins-scroll.js"></script>
+<script type="text/javascript" src="qtimages/js/waypoint.min.js"></script>
+<script type="text/javascript" src="qtimages/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="qtimages/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="qtimages/js/script.js"></script>
+<link type="text/css" rel="stylesheet" href="qtimages/css/jquery.mmenu.all.css" />
+<script type="text/javascript" src="qtimages/js/jquery.mmenu.all.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        var mmenu = $('nav#mmenu').mmenu({
+            slidingSubmenus: true,
+            classes: 'mm-white',
+            //mm-fullscreen mm-light
+            extensions: ["theme-white"],
+            offCanvas: {
+                position: "right",
+                //left, top, right, bottom
+                zposition: "front" //back, front,next
+                //modal		: true
+            },
+            searchfield: false,
+            counters: false,
+            //navbars		: {
+            //content : [ "prev", "title", "next" ]
+            //},
+            navbar: {
+                title: "网站导航"
+            },
+            header: {
+                add: true,
+                update: true,
+                title: "网站导航"
+            }
+        });
+        $(".closemenu").click(function() {
+            var mmenuAPI = $("#mmenu").data("mmenu");
+            mmenuAPI.close();
+        });
+    });
+</script>
+<!--daipxingxlun-->
+</div>
+<script src="js/swiper-5.4.5/swiper.min.js"></script>
+<script src="js/vue2.6.11/axios.js"></script>
+<script src="js/vue2.6.11/vue.min.js"></script>
+<script src="js/my.js"></script>
+<link rel="stylesheet" href="./qtimages/sl_common_form.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/element/index.css">
+<link rel="stylesheet" href="css/hsg.css">
+<script>
+	new Vue({
+		el: '#wrapper',
+		data: {
+			isCollect: false,
+			tieziid: 0,
+            id: 0,
+			mainSrc: '',
+            totalUser: 0,
+			//tupxianzd
+		
+			tieziInfo: {},
+			comments: [],
+            huitie: [],
+			huitieInfo: {
+				tieziid: 0,
+				neirong: ''
+			},
+			//totalComment: 0,
+			isShow: false,
+
+			user: {},
+			searchText: null,
+		},
+
+		created: function () {
+			axios.get('/auth').then(res => {
+				if (res.data.code === '0') {
+					this.user = res.data.data;
+				}
+			});
+			//xuxyaxodenxglxu
+			this.tieziid = this.getQueryVariable('tieziid');
+			this.loadTieziInfo();
+			this.loadHuitie();
+
+            axios.get("/tieziInfo/getTotal/"+this.getQueryVariable('tieziid')).then(res => {
+                if (res.data.code === '0') {
+                    let map = res.data.data;
+                    this.totalUser = map['totalUser'];
+                    this.totalComment = map['totalComment'];
+                    this.totalPrice = map['totalPrice'];
+                    this.totalShopping = map['totalShopping'];
+                }
+            });
+
+        },
+
+		methods: {
+			searchTiezi(text) {   // 根据关键字查询商品
+				if(text) {
+					location.href = '/front/tiezilisttp.html?text=' + text;
+				}else {
+					location.href = '/front/tiezilisttp.html';
+				}
+			},
+			loadTieziInfo() {
+				axios.get("/tieziInfo/" + this.tieziid).then(res => {
+					if (res.data.code === '0') {
+						this.tieziInfo = res.data.data;
+						this.mainSrc = '/front/img/goods/default.png';
+						//yodutdupidanjs
+					} else {
+						alert(res.data.msg);
+					}
+				});
+			},
+            openModel() {
+                if(this.user.level+"" == 'undefined'){
+                    alert("请先登录");
+                    return;
+                }
+                //this.tieziInfo.tieziid = this.tieziid;
+                this.huitieInfo.neirong = '';
+                $('#huitieModal').modal('show');
+            },
+            submitHuitie() {
+                this.user = JSON.parse(localStorage.getItem('user'));
+
+                if (this.user.level === "注册用户") {this.huitieInfo.fbr = this.user.yonghuming;}
+                if (this.user.level === "医生") {this.huitieInfo.fbr = this.user.yishenggonghao;}
+
+                let data = {faburen: this.huitieInfo.fbr,  neirong: this.huitieInfo.neirong, fid: this.getQueryVariable('tieziid')};
+                debugger
+                axios.post('/tieziInfo', data).then(res => {
+                    if (res.data.code === '0') {
+                        $('#huitieModal').modal('hide');
+
+                        alert('回帖成功');
+                        this.loadTieziInfo();
+                        this.loadHuitie();
+                    } else {
+                        alert(res.data.msg);
+                    }
+                })
+            },
+            loadHuitie() {
+			    debugger
+				 axios.get("/tieziInfo/huitie/" + this.tieziid+"").then(res => {
+					if (res.data.code === '0') {
+						this.huitie = res.data.data;
+						this.totalhuitie = this.huitie.length;
+					} else {
+						alert(res.data.msg)
+					}
+				})
+			},
+			getQueryVariable(variable) {
+				let query = window.location.search.substring(1);
+				let vars = query.split("&");
+				for (let i = 0; i < vars.length; i++) {
+					let pair = vars[i].split("=");
+					if (pair[0] === variable) {
+						return pair[1];
+					}
+				}
+				return '';
+			},
+			mouseOver(id) {
+				$('#main-img-id').attr('src', '/files/download/' + id);
+			},
+			changeCount(type) {
+				let $count = $('#count-id');
+				let $store = $('#store-id');
+				let count = parseInt($count.text());
+				let store = parseInt($store.text());
+				if (type === '+') {
+					count = count === store ? store : count + 1;
+				} else {
+					count = count === 1 ? 1 : count - 1;
+				}
+				$count.text(count)
+			},
+
+
+			dianzan_d_click() {
+				axios.put('/tieziInfo', {id: this.tieziid, dianzan_d: 1}).then(res => {
+					if (res.data.code === '0') {
+						alert('点赞+1');
+						this.loadTieziInfo();
+					} else {
+						alert(res.data.msg)
+					}
+				})
+			},
+			dianzan_c_click() {
+				axios.put('/tieziInfo', {id: this.tieziid, dianzan_c: 1}).then(res => {
+					if (res.data.code === '0') {
+						alert('反对+1');
+						this.loadTieziInfo();
+					} else {
+						alert(res.data.msg)
+					}
+				})
+			},
+
+			// logout() {
+			// 	axios.get("/logout").then(res => {
+			// 		if(res.data.code === '0') {
+			// 			location.href = '/front/index.html';
+			// 		} else {
+			// 			msg('error', res.data.msg);
+			// 		}
+			// 	})
+			// }
+		}
+	})
+</script>
+</body>
+</html>

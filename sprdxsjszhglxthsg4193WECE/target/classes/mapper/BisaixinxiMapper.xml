@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.BisaixinxiInfoDao">
+
+    <select id="checkRepeat" resultType="java.lang.Integer">
+        select count(id) from `bisaixinxi_info` where ${column} = #{value}
+        <if test="id != null">
+            and id != #{id}
+        </if>
+    </select>
+
+  <select id="findByTianjiarenzj" resultType="com.example.vo.BisaixinxiInfoVo">
+        select * from `bisaixinxi_info` where `tianjiaren` = #{username}
+    </select>
+
+    <select id="findBySaishimingcheng" resultType="com.example.vo.BisaixinxiInfoVo">
+        select `bisaixinxi_info`.* from `bisaixinxi_info`
+        where 1 = 1
+        <if test="saishimingcheng != null and saishimingcheng != '' and saishimingcheng != 'all'">
+            and `bisaixinxi_info`.`saishimingcheng` like concat('%', #{saishimingcheng}, '%')
+        </if>
+        order by `bisaixinxi_info`.id
+    </select>
+	<select id="findBySaishimingchenglist3" resultType="com.example.vo.BisaixinxiInfoVo">
+        select `bisaixinxi_info`.* from `bisaixinxi_info`
+        where 1 = 1
+        <if test="saishimingcheng != null and saishimingcheng != '' and saishimingcheng != 'all'">
+            and `bisaixinxi_info`.`saishimingcheng` like concat('%', #{saishimingcheng}, '%')
+        </if>
+		<if test="yonghuming != null and yonghuming != '' and yonghuming != 'all'">
+            and `bisaixinxi_info`.`yonghuming` like concat('%', #{yonghuming}, '%')
+        </if>
+        order by `bisaixinxi_info`.id
+    </select>        <select id="findBySaishimingchenglist2" resultType="com.example.vo.BisaixinxiInfoVo">
+        select `bisaixinxi_info`.* from `bisaixinxi_info`
+        where 1 = 1
+        <if test="saishimingcheng != null and saishimingcheng != '' and saishimingcheng != 'all'">
+            and `bisaixinxi_info`.`saishimingcheng` like concat('%', #{saishimingcheng}, '%')
+        </if>
+		<if test="tianjiaren != null and tianjiaren != '' and tianjiaren != 'all'">
+            and `bisaixinxi_info`.`tianjiaren` like concat('%', #{tianjiaren}, '%')
+        </if>
+        order by `bisaixinxi_info`.id
+    </select>        <!--list23N-->
+    <select id="count" resultType="Integer">
+        select count(id) from `bisaixinxi_info`
+    </select>
+</mapper>
+
