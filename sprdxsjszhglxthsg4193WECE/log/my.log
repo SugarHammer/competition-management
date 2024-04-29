@@ -242,3 +242,6 @@
 2024-03-29 15:19:59.962  WARN 21476 --- [http-nio-8888-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2cc49902 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2024-03-29 15:20:26.384  WARN 21476 --- [http-nio-8888-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@118bd337 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2024-03-29 15:20:26.384  WARN 21476 --- [http-nio-8888-exec-8] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4d2a458e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-03-29 15:57:39.129  INFO 21476 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2024-03-29 15:57:39.132  INFO 21476 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-29 15:57:39.135  INFO 21476 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
